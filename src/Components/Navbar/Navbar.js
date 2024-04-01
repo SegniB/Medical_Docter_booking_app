@@ -30,15 +30,15 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="link">
-            <Link to="#">Appointments</Link>
+            <Link to="/instant-consultation">Appointments</Link>
           </li>
           <li className="link">
-            <Link to="../Sign_Up//Sign_Up.html">
+            <Link to="/signup">
               <button className="btn1">Sign Up</button>
             </Link>
           </li>
           <li className="link">
-            <Link to="../Login/Login.html">
+            <Link to="/login">
               <button className="btn1">Login</button>
             </Link>
           </li>

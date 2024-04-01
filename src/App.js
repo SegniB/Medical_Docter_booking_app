@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing_Page from './Components/Landing_Page/Landing_Page.js';
+import LandingPage from './Components/Landing_Page/Landing_Page.js';
 import Login from './Components/Login/Login.js'
-import Sign_up from './Components/Sign_Up/Sign_Up.js'
+import SignUp from './Components/Sign_Up/Sign_Up.js'
+//import Notification from './Components/Notification/Notification.js'
+import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation.js'
 
 import Navbar from './Components/Navbar/Navbar';
 function App() {
@@ -10,13 +12,16 @@ function App() {
   return (
     <>
         <BrowserRouter>
-          <Navbar/>
+        
+              <Navbar/>
               <Routes>
-              <Route path="/" element={<Landing_Page />}/>
+              <Route path="/" element={<LandingPage />}/>
               <Route path="/login" element={<Login />}/>
-              <Route path="/sign_up" element={<Sign_up />}/>
+              <Route path="/signup" element={<SignUp />}/>
+             
+              <Route path="/instant-consultation" element={<InstantConsultation />} />
               </Routes>
-            
+        
         </BrowserRouter>
        
     </>

@@ -51,8 +51,15 @@ const Sign_Up = () => {
     };
 
     return (
-        <div className="container" style={{marginTop:'5%'}}>
+        <div className="container" style={{marginTop:'10%'}}>
             <div className="signup-grid">
+            <div className="signup-text">
+                <h1>Sign Up</h1>
+
+            </div>
+            <div className="signup-text1" style={{textAlign: 'left'}}>
+                Already a member? <span><Link to="/login" style={{color: '#2190FF'}}> Login</Link></span>
+            </div>
                 <div className="signup-form">
                     <form method="POST" onSubmit={register}>
                         <div className="form-group">

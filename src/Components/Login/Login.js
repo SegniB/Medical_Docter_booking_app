@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //Apply css according to your design theme or css that has been given to you in week 2 lab 2
-import "./login.css";
+import "./Login.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
 

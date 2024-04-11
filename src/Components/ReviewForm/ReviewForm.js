@@ -1,33 +1,39 @@
 import React, { useState } from 'react';
 import './ReviewForm.css'
-function GiveReviews() {
+
+function GiveReviews({ doctorName, appointmentDate }) {
   const [showForm, setShowForm] = useState(false);
   const [submittedMessage, setSubmittedMessage] = useState('');
   const [showWarning, setShowWarning] = useState(false);
   const [formData, setFormData] = useState({
-        name: '',
-        review: '',
-        rating: 0
-      });
+    name: '',
+    review: '',
+    rating: 0
+  });
 
   const handleButtonClick = () => {
     setShowForm(true);
   };
 
   const handleChange = (e) => {
-    setFormData(e.target.value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmittedMessage(formData);
-    setFormData('');
-        if (formData.name && formData.review && formData.rating > 0) {
-          setShowWarning(false);
-        } else {
-          setShowWarning(true);
-        }
+    setFormData({
+      name: '',
+      review: '',
+      rating: 0
+    });
+    if (formData.name && formData.review && formData.rating > 0) {
+      setShowWarning(false);
+    } else {
+      setShowWarning(true);
+    }
   };
+
   return (
     <div>
       <h2>Form with Message</h2>
@@ -36,17 +42,38 @@ function GiveReviews() {
       ) : (
         <form onSubmit={handleSubmit}>
           <h2>Give Your Feedback</h2>
-               {showWarning && <p className="warning">Please fill out all fields.</p>}
-                <div>
-                   <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
-             </div>
-                <div>
-                 <label htmlFor="review">Review:</label>
-                  <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
-                 </div>
-                 <button type="submit">Submit</button>
-               </form>
+          {showWarning && <p className="warning">Please fill out all fields.</p>}
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="review">Review:</label>
+            <textarea
+              id="review"
+              name="review"
+              value={formData.review}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="rating">Rating:</label>
+            <input
+              type="number"
+              id="rating"
+              name="rating"
+              value={formData.rating}
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
       )}
       {submittedMessage && (
         <div>
@@ -54,6 +81,11 @@ function GiveReviews() {
           <p>{submittedMessage}</p>
         </div>
       )}
+      <div>
+        <h3>Doctor Information:</h3>
+        <p>Doctor Name: {doctorName}</p>
+        <p>Appointment Date: {appointmentDate}</p>
+      </div>
     </div>
   );
 }
